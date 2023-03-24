@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Calculator</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div class="calculator">
-		<div class="display">
-			<p id="result">0</p>
-		</div>
-		<div class="buttons">
-			<button class="operator" onclick="appendValue('/')">÷</button>
-			<button class="operator" onclick="appendValue('*')">x</button>
-			<button class="operator" onclick="appendValue('-')">-</button>
-			<button class="operator" onclick="appendValue('+')">+</button>
-			<button onclick="appendValue('7')">7</button>
-			<button onclick="appendValue('8')">8</button>
-			<button onclick="appendValue('9')">9</button>
-			<button onclick="clearDisplay()">C</button>
-			<button onclick="appendValue('4')">4</button>
-			<button onclick="appendValue('5')">5</button>
-			<button onclick="appendValue('6')">6</button>
-			<button class="equal" onclick="calculate()">=</button>
-			<button onclick="appendValue('1')">1</button>
-			<button onclick="appendValue('2')">2</button>
-			<button onclick="appendValue('3')">3</button>
-			<button class="zero" onclick="appendValue('0')">0</button>
-			<button onclick="appendValue('.')">.</button>
-		</div>
-	</div>
-
-	<script src="script.js"></script>
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <div class="button-row">
+            <button class="operator" onclick="insertOperator('+')">+</button>
+            <button class="operator" onclick="insertOperator('-')">-</button>
+            <button class="operator" onclick="insertOperator('*')">&times;</button>
+            <button class="operator" onclick="insertOperator('/')">&divide;</button>
+        </div>
+        <div class="button-row">
+            <button onclick="insertNumber(7)">7</button>
+            <button onclick="insertNumber(8)">8</button>
+            <button onclick="insertNumber(9)">9</button>
+            <button class="delete" onclick="clearResult()">C</button>
+        </div>
+        <div class="button-row">
+            <button onclick="insertNumber(4)">4</button>
+            <button onclick="insertNumber(5)">5</button>
+            <button onclick="insertNumber(6)">6</button>
+            <button class="delete" onclick="deleteLast()">&larr;</button>
+        </div>
+        <div class="button-row">
+            <button onclick="insertNumber(1)">1</button>
+            <button onclick="insertNumber(2)">2</button>
+            <button onclick="insertNumber(3)">3</button>
+            <button class="equal" onclick="calculate()">=</button>
+        </div>
+        <div class="button-row">
+            <button class="zero" onclick="insertNumber(0)">0</button>
+            <button onclick="insertOperator('.')">.</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

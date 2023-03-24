@@ -1,45 +1,81 @@
-let result = document.getElementById('result');
+// Define variables
+let currentResult = '';
+let currentOperator = '';
+const resultElement = document.getElementById('result');
 
-function appendValue(value) {
-	result.innerText += value;
+// Insert a number or a decimal point
+function insertNumber(number) {
+    currentResult += number;
+    resultElement.value = currentResult;
 }
 
-function clearDisplay() {
-	result.innerText = '';
+// Insert an operator (+, -, *, /)
+function insertOperator(operator) {
+    if (currentResult !== '') {
+        currentOperator = operator;
+        currentResult += operator;
+        resultElement.value = currentResult;
+    }
 }
 
+// Clear the result
+function clearResult() {
+    currentResult = '';
+    currentOperator = '';
+    resultElement.value = '';
+}
+
+// Delete the last character
+function deleteLast() {
+    currentResult = currentResult.slice(0, -1);
+    resultElement.value = currentResult;
+}
+
+// Calculate the result
 function calculate() {
-	try {
-		result.innerText = eval(result.innerText);
-	} catch (error) {
-		result.innerText = 'Error';
-	}
+    if (currentOperator !== '' && currentResult !== '') {
+        const result = eval(currentResult);
+        currentResult = result.toString();
+        currentOperator = '';
+        resultElement.value = currentResult;
+    }
 }
 
-const buttons = document.querySelectorAll('.button');
-
-buttons.forEach(button => {
-	button.addEventListener('click', () => {
-		button.classList.add('clicked');
-		setTimeout(() => {
-			button.classList.remove('clicked');
-		}, 150);
-	});
+// Listen for keyboard inputs
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+    switch (key) {
+        case 'Enter':
+            calculate();
+            break;
+        case '.':
+            insertOperator('.');
+            break;
+        case '/':
+        case '*':
+        case '+':
+        case '-':
+            insertOperator(key);
+            break;
+        case 'Delete':
+            clearResult();
+            break;
+        case 'Backspace':
+            deleteLast();
+            break;
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            insertNumber(key);
+            break;
+    }
 });
 
 
-document.addEventListener('keydown', function (event) {
-	if (event.key >= 0 && event.key <= 9) {
-		appendValue(event.key);
-	} else if (event.key === '.') {
-		appendValue('.');
-	} else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
-		appendValue(event.key);
-	} else if (event.key === 'Enter') {
-		calculate();
-	} else if (event.key === 'Escape') {
-		clearDisplay();
-	} else if (event.key === 'Backspace' || event.key === 'Delete' || event.key === 'U+0008') {
-		display.textContent = display.textContent.slice(0, -1);
-	}
-});
