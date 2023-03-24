@@ -1,50 +1,104 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #333;
-    color: #fff;
+    background-color: #f2f2f2;
 }
 
 .calculator {
-    width: 300px;
-    margin: 50px auto;
-    background-color: #666;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px #999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 350px;
+    height: 450px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .display {
-    background-color: #444;
-    padding: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    width: 100%;
+    height: 80px;
+    font-size: 40px;
     text-align: right;
-}
-
-.display p {
-    margin: 0;
-    font-size: 2em;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #f2f2f2;
 }
 
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
-    padding: 10px;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+    padding: 20px;
 }
 
-button {
-    background-color: #999;
-    color: #fff;
-    font-size: 1.2em;
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #0077b6;
     border: none;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-    background-color: #ccc;
+.button:hover {
+    background-color: #023e8a;
 }
+
+.button.clicked {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    background-color: #03045e;
+}
+
+.button.operator {
+    background-color: #0096c7;
+}
+
+.button.operator:hover {
+    background-color: #046f9b;
+}
+
+.button.operator:active {
+    background-color: #03396c;
+}
+
+.button.clear {
+    background-color: #dc3545;
+}
+
+.button.clear:hover {
+    background-color: #c82333;
+}
+
+.button.clear:active {
+    background-color: #9b1c1f;
+}
+
+.button.equal {
+    background-color: #28a745;
+}
+
+.button.equal:hover {
+    background-color: #218838;
+}
+
+.button.equal:active {
+    background-color: #1e7e34;
+}
+
 
 .clicked {
     transform: scale(0.95);
