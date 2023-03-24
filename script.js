@@ -15,3 +15,17 @@ function calculate() {
 		result.innerText = 'Error';
 	}
 }
+
+document.addEventListener('keydown', function(event) {
+	if (event.key >= 0 && event.key <= 9) {
+		appendValue(event.key);
+	} else if (event.key === '.') {
+		appendValue('.');
+	} else if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
+		appendValue(event.key);
+	} else if (event.key === 'Enter') {
+		calculate();
+	} else if (event.key === 'Escape') {
+		clearDisplay();
+	}
+});
