@@ -27,5 +27,7 @@ document.addEventListener('keydown', function(event) {
 		calculate();
 	} else if (event.key === 'Escape') {
 		clearDisplay();
-	}
+	}else if (event.key === 'Backspace') {
+        display.textContent = display.textContent.slice(0, -1);
+    }
 });
